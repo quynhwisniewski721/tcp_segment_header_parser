@@ -1,6 +1,6 @@
 [project]
 name = "tcp-segment-header-parser"
-version = "0.1.1"
+version = "0.1.2"
 description = "Parses the fixed 20-byte TCP header into a typed object with ports, sequence numbers, flags, and window size."
 requires-python = ">=3.10"
 dependencies = []
