@@ -41,3 +41,10 @@ PYTHONPATH=src python -m unittest discover -s tests
 - `parse_header(data)` — returns a `TCPHeader`.
 - `TCPHeader` — the result type with `source_port`, `destination_port`, `sequence_number`, `acknowledgment_number`, `data_offset`, `flags`, `window_size`, `checksum`, and `urgent_pointer` attributes.
 - `Flag` — an `enum.IntFlag` with members `FIN`, `SYN`, `RST`, `PSH`, `ACK`, `URG`, `ECE`, `CWR`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
